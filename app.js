@@ -4,6 +4,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const exphbs = require('express-handlebars');
+const mongoose = require('mongoose');
 
 // ROUTES
 const indexRouter = require('./routes/index');
@@ -22,6 +23,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/hfpm', { useNewUrlParser: true });
 
 app.use('/', indexRouter);
 app.use('/new-fund', newFund);

@@ -1,3 +1,18 @@
 1. using route
 2. for mvp use chart.js
-3. 
+
+
+TODO:
+1. mongodb
+2. user auth
+
+
+ROUTES: 
+/ >> landing page
+/new-fund >>> user sign up page
+/fund >>> hedge fund dashboard
+/fund/traders >>> list of current traders
+/fund/traders/traderId/ >>> dashboard of one trader
+/fund/traders/traderId/reports >>> list of peroformance reports for one traderId
+/fund/traders/traderId/reports/reportId
+ 
