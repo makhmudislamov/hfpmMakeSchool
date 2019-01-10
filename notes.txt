@@ -5,6 +5,7 @@
 TODO:
 1. mongodb
 2. user auth
+3. go back to old format app.get, 
 
 
 ROUTES: 

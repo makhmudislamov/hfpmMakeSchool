@@ -7,15 +7,15 @@ const exphbs = require('express-handlebars');
 const mongoose = require('mongoose');
 
 // ROUTES
-const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
-const newFund = require('./routes/new-fund');
+const index = require('./routes/index');
+// const usersRouter = require('./routes/users');
+// const newFund = require('./routes/new-funds');
 
 const app = express();
 
 // view engine setup
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
-app.set('views', path.join(__dirname, 'views'));
+// app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
 app.use(logger('dev'));
@@ -26,9 +26,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/hfpm', { useNewUrlParser: true });
 
-app.use('/', indexRouter);
-app.use('/new-fund', newFund);
-app.use('/users', usersRouter);
+// app.use('/', indexRouter);
+// app.use('/new-fund', newFund);
+// app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -52,5 +52,6 @@ app.listen(port, () => {
   console.log('App listening on port 3000!')
 });
 
+index(app);
 
 module.exports = app;
