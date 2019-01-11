@@ -1,14 +1,12 @@
-const express = require('express');
-
-
 module.exports = function (app) {
   
   // GET home page.
-  app.get('/', function (req, res) {
+  app.get('/', (req, res) => {
     res.render('index');
-  });
+  })
 
 }
+
 
 
 
