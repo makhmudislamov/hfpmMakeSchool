@@ -10,7 +10,7 @@ TODO:
 
 ROUTES: 
 / >> landing page
-/new-fund >>> user sign up page
+/sign-up >>> user sign up page
 /fund >>> hedge fund dashboard
 /fund/traders >>> list of current traders
 /fund/traders/traderId/ >>> dashboard of one trader

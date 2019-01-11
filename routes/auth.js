@@ -46,7 +46,7 @@ module.exports = function (app) {
                     return next(err);
                 } else {
                     req.session.userId = user._id;
-                    return res.redirect('/profile');
+                    return res.redirect('/fund');
                 }
             });
         } else {
@@ -57,7 +57,7 @@ module.exports = function (app) {
     });
 
     // GET route after registering
-    app.get('/profile', function (req, res, next) {
+    app.get('/fund', function (req, res, next) {
         User.findById(req.session.userId)
             .exec(function (error, user) {
                 if (error) {
@@ -68,7 +68,8 @@ module.exports = function (app) {
                         err.status = 400;
                         return next(err);
                     } else {
-                        return res.send('<h1>Name: </h1>' + user.username + '<h2>Mail: </h2>' + user.email + '<br><a type="button" href="/logout">Logout</a>')
+                        // made changes here
+                        return res.send('dashboard')
                     }
                 }
             });
