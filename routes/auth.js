@@ -8,7 +8,7 @@ module.exports = function (app) {
     });
 
     // CREATE a user
-    app.post('/sign-up', (req, res) => {
+    app.post('/sign-up', (req, res, next) => {
         // confirm that user typed same password twice
         if (req.body.password !== req.body.passwordConf) {
             var err = new Error('Passwords do not match.');
@@ -50,9 +50,9 @@ module.exports = function (app) {
                 }
             });
         } else {
-            var err = new Error('All fields required.');
+            let err = new Error('All fields required.');
             err.status = 400;
-            return next(err);
+            return next(err); // having error here: next is not defined
         }
     });
 
@@ -64,7 +64,7 @@ module.exports = function (app) {
                     return next(error);
                 } else {
                     if (user === null) {
-                        var err = new Error('Not authorized! Go back!');
+                        let err = new Error('Not authorized! Go back!');
                         err.status = 400;
                         return next(err);
                     } else {
@@ -89,3 +89,6 @@ module.exports = function (app) {
         }
     });
 };
+
+
+// used this tutorial: https://github.com/Createdd/authenticationIntro 

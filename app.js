@@ -31,6 +31,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // serving static files
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/hfpm', { useNewUrlParser: true });
 const db = mongoose.connection;
 
@@ -39,21 +41,22 @@ db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function () {
   // we're connected!
 });
-
-// app.use('/', indexRouter);
-indexRouter(app);
-funds(app);
-auth(app);
-
 //use sessions for tracking logins
 app.use(session({
-  secret: 'work hard',
+  secret: 'work smart',
   resave: true,
   saveUninitialized: false,
   store: new MongoStore({
     mongooseConnection: db
   })
 }));
+
+// app.use('/', indexRouter);
+indexRouter(app);
+funds(app);
+auth(app);
+
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

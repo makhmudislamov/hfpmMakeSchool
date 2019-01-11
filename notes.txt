@@ -16,4 +16,15 @@ ROUTES:
 /fund/traders/traderId/ >>> dashboard of one trader
 /fund/traders/traderId/reports >>> list of peroformance reports for one traderId
 /fund/traders/traderId/reports/reportId
+
+
+BLOCKED:
+1. user auth >>> next not defined
+
+
+QUESTIONS:
+1. associating users with hedge fund >> model? when logged in user should go to dashboard. 
+2. associating hedge fund with traders
+3. associating traders with comments/reports
+
  
