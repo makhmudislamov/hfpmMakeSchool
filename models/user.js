@@ -1,21 +1,62 @@
 const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
+const bcrypt = require('bcrypt');
 
-const UserSchema = new Schema({
-    createdAt: { type: Date },
-    updatedAt: { type: Date },
-    password: { type: String, select: false },
-    username: { type: String, required: true }
-});
-
-// Define the callback with a regular function to avoid problems with this
-UserSchema.pre("save", function (next) {
-    // SET createdAt AND updatedAt
-    const now = new Date();
-    this.updatedAt = now;
-    if (!this.createdAt) {
-        this.createdAt = now;
+const UserSchema = new mongoose.Schema({
+    email: {
+        type: String,
+        unique: true,
+        required: true,
+        trim: true
+    },
+    username: {
+        type: String,
+        unique: true,
+        required: true,
+        trim: true
+    },
+    password: {
+        type: String,
+        required: true,
+    },
+    passwordConf: {
+        type: String,
+        required: true,
     }
-    next();
 });
-module.exports = mongoose.model("User", UserSchema);
+
+//authenticate input against database
+UserSchema.statics.authenticate = function (email, password, callback) {
+    User.findOne({ email: email })
+        .exec(function (err, user) {
+            if (err) {
+                return callback(err)
+            } else if (!user) {
+                var err = new Error('User not found.');
+                err.status = 401;
+                return callback(err);
+            }
+            bcrypt.compare(password, user.password, function (err, result) {
+                if (result === true) {
+                    return callback(null, user);
+                } else {
+                    return callback();
+                }
+            })
+        });
+}
+
+//hashing a password before saving it to the database
+UserSchema.pre('save', function (next) {
+    var user = this;
+    bcrypt.hash(user.password, 10, function (err, hash) {
+        if (err) {
+            return next(err);
+        }
+        user.password = hash;
+        next();
+    })
+});
+
+
+const User = mongoose.model('User', UserSchema);
+module.exports = User;
