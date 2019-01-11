@@ -2,6 +2,31 @@ const User = require('../models/user');
 
 module.exports = function (app) {
 
+
+    // GET log-in form
+    app.get('/log-in', (req, res) => {
+        res.render('log-in');
+    });
+    
+    // login
+    app.post('/log-in', (req, res, next) => {
+        if (req.body.logemail && req.body.logpassword) {
+            User.authenticate(req.body.logemail, req.body.logpassword, function (error, user) {
+                if (error || !user) {
+                    var err = new Error('Wrong email or password.');
+                    err.status = 401;
+                    return next(err);
+                } else {
+                    req.session.userId = user._id;
+                    return res.redirect('/fund');
+                }
+            });
+        } else {
+            let err = new Error('All fields required.');
+            err.status = 400;
+            return next(err); // having error here: next is not defined
+        }
+    });
     // GET sign-up form
     app.get('/sign-up', (req, res) => {
         res.render('sign-up');
@@ -69,7 +94,7 @@ module.exports = function (app) {
                         return next(err);
                     } else {
                         // made changes here
-                        return res.send('dashboard')
+                        return res.render('dashboard')
                     }
                 }
             });
