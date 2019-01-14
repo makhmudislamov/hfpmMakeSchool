@@ -13,6 +13,7 @@ const MongoStore = require('connect-mongo')(session);
 const indexRouter = require('./routes/index');
 const funds = require('./routes/hedgeFunds');
 const traders = require('./routes/traders');
+const reports = require('./routes/reports');
 const auth = require('./routes/auth')
 
 const app = express();
@@ -52,10 +53,11 @@ app.use(session({
   })
 }));
 
-// app.use('/', indexRouter);
+// exporting routes
 indexRouter(app);
 funds(app);
 traders(app);
+reports(app);
 auth(app);
 
 
