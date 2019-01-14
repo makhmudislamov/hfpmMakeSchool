@@ -6,5 +6,6 @@ module.exports = mongoose.model('HedgeFund', {
     worth: String,
     portfolioContent: String,
     portfolioItems: String,
-    traders: String
+    traders: String  // 
+    // add user here
 });

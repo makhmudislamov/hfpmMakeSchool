@@ -18,6 +18,7 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    // doesn't hash, take it out
     passwordConf: {
         type: String,
         required: true,

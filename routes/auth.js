@@ -11,6 +11,7 @@ module.exports = function (app) {
     // login
     app.post('/log-in', (req, res, next) => {
         if (req.body.logemail && req.body.logpassword) {
+            // double check, custom midleware to app.js
             User.authenticate(req.body.logemail, req.body.logpassword, function (error, user) {
                 if (error || !user) {
                     var err = new Error('Wrong email or password.');
