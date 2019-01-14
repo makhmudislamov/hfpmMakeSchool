@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
-
+const Schema = mongoose.Schema
 // Model for hedge fund
 module.exports = mongoose.model('HedgeFund', {
     fundName: String,
     worth: String,
     portfolioContent: String,
     portfolioItems: String,
-    traders: String  // 
-    // add user here
+    tradersNum: String,
+    userId: { type: Schema.Types.ObjectId, ref: 'User' }
 });

@@ -1,4 +1,5 @@
-const HedgeFund = require('../models/hedgeFund.js');
+const HedgeFund = require('../models/hedgeFund');
+const Trader = require('../models/trader');
 
 module.exports = function (app) {
 
@@ -30,14 +31,16 @@ module.exports = function (app) {
         })
     });
 
-    // GET
+    // GET one hedge fund
     app.get('/fund/:id', (req, res) => {
         // find review
         HedgeFund.findById(req.params.id).then(hedgeFund => {
             // fetch its comments
+            Trader.find({ hedgeFundId: req.params.id }).then(traders => {
                 // respond with the template with both values
-                res.render('fund-show', {hedgeFund: hedgeFund})
-            
+                // res.render('orgs-show', { charity: charity, comments: comments })
+                res.render('fund-show', { hedgeFund: hedgeFund, traders: traders })
+            })
         }).catch((err) => {
             // catch errors
             console.log(err.message)

@@ -1,5 +1,6 @@
 <div class="trader-form">
-    <form action="/fund/traders">
+    {{!-- issue is in action --}}
+    <form action="/fund/{{hedgeFund._id}}" method="POST">
         <input type="text" name="name" value="{{trader.name}}" placeholder="Full Name">
         <input type="text" name="allocated" value="{{trader.allocated}}" placeholder="How much he is allocatred?">
         <input type="text" name="currentWorth" value="{{trader.currentWorth}}" placeholder="How much does this trader worth?">
