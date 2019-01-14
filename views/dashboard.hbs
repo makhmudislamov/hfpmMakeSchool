@@ -2,11 +2,7 @@
 
 <div class="fund-box">
     {{#each hedgeFund}}
-    <h1>{{this.fundName}}</h1>
-    <h2>{{this.worth}}</h2>
-    <h2>{{this.portfolioContent}}</h2>
-    <h2>{{this.portfolioItems}}</h2>
-    <a href="/fund/traders"><h2>{{this.traders}}</h2></a>
+    <h1><a href="/fund/{{this._id}}">{{this.fundName}}</a></h1>
     {{/each}}
 </div>
 

@@ -23,23 +23,26 @@ module.exports = function (app) {
     app.post('/fund', (req, res) => {
         HedgeFund.create(req.body).then((hedgeFund) => {
             console.log(hedgeFund);
-            // res.redirect(`/fund/${hedgeFund._id}`);
-            res.redirect('/myfund');
+            res.redirect(`/fund/${hedgeFund._id}`);
+            // res.redirect('/myfund');
         }).catch((err) => {
             console.log(err.message);
         })
     });
 
     // GET
-    // app.get('/fund', (req, res) => {
-    //     HedgeFund.find()
-    //         .then(hedgeFund => {
-    //             res.render('dashboard', { hedgeFund: hedgeFund });
-    //         })
-    //         .catch(err => {
-    //             console.log(err);
-    //         })
-    // })
+    app.get('/fund/:id', (req, res) => {
+        // find review
+        HedgeFund.findById(req.params.id).then(hedgeFund => {
+            // fetch its comments
+                // respond with the template with both values
+                res.render('fund-show', {hedgeFund: hedgeFund})
+            
+        }).catch((err) => {
+            // catch errors
+            console.log(err.message)
+        });
+    });
     
 }
 
