@@ -4,7 +4,7 @@ module.exports = function (app) {
 
     // GET dashboard
     // TODO: fix this route to fund, this is not used
-    app.get('/funds', (req, res) => {
+    app.get('/myfund', (req, res) => {
         HedgeFund.find()
             .then(hedgeFund => {
                 res.render('dashboard', { hedgeFund: hedgeFund });
@@ -12,7 +12,7 @@ module.exports = function (app) {
             .catch(err => {
                 console.log(err);
             })
-    })
+    });
 
     // GET sign up page
     app.get('/new-fund', (req, res) => {
@@ -24,11 +24,11 @@ module.exports = function (app) {
         HedgeFund.create(req.body).then((hedgeFund) => {
             console.log(hedgeFund);
             // res.redirect(`/fund/${hedgeFund._id}`);
-            res.redirect('/funds');
+            res.redirect('/myfund');
         }).catch((err) => {
             console.log(err.message);
         })
-    })
+    });
 
     // GET
     // app.get('/fund', (req, res) => {

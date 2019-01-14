@@ -1,6 +1,7 @@
 <h1>The Following traders are working at</h1>
 
-<a href="/fund/traders/{{this._id}}"/><h2>Trader Full Name</h2></a>
-<a href="/fund/traders/{{this._id}}"/><h2>Trader Full Name</h2></a>
-<a href="/fund/traders/{{this._id}}"/><h2>Trader Full Name</h2></a>
-<a href="/fund/traders/{{this._id}}"/><h2>Trader Full Name</h2></a>
+{{#each trader}}
+{{!-- <a href="route for one trader"> <h2>{{this.name}}</h2> </a> --}}
+<h2>{{this.name}}</h2>
+{{/each}}
+<a href="/fund/traders/new-trader">Add new Trader</a>

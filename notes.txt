@@ -3,9 +3,13 @@
 
 
 TODO:
-1. mongodb
-2. user auth
-3. go back to old format app.get, 
+1. mongodb - DONE
+2. user auth - DONE
+3. go back to old format app.get, - DONE
+4. associate user to hedgefund
+5. associate traders to fund
+6. associate reports to trader
+7. adding win/loss of a trader
 
 
 ROUTES: 
