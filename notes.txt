@@ -19,7 +19,9 @@ ROUTES:
 
 
 BLOCKED:
-1. user auth >>> next not defined
+1. user auth >>> next not defined >> PASSED: define next inside your route (res, req, next)...
+2. heroku >> cannot create account on live heroku app >>> H12 request time out
+3. passConf also should be salted
 
 
 QUESTIONS:

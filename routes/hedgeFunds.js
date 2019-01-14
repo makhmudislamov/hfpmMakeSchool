@@ -1,4 +1,4 @@
-const HedgeFund = require('../models/hedge-fund.js');
+const HedgeFund = require('../models/hedgeFund.js');
 
 module.exports = function (app) {
 
@@ -22,7 +22,8 @@ module.exports = function (app) {
     app.post('/fund', (req, res) => {
         HedgeFund.create(req.body).then((hedgeFund) => {
             console.log(hedgeFund);
-            res.redirect(`/fund/${hedgeFund._id}`);
+            // res.redirect(`/fund/${hedgeFund._id}`);
+            res.redirect('/funds');
         }).catch((err) => {
             console.log(err.message);
         })

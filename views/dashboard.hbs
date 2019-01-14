@@ -1,15 +1,16 @@
 <h1>This is hedge fund dashboard</h1>
 
-{{!-- <div class="fund-box">
+<div class="fund-box">
     {{#each hedgeFund}}
     <h2>{{this.fundName}}</h2>
+    <h1>{{this.worth}}</h1>
+    <h1>{{this.portfolioContent}}</h1>
+    <h1>{{this.portfolioItems}}</h1>
+    <h1>{{this.traders}}</h1>
     {{/each}}
-</div> --}}
-
-<div class="new-fund">
-    <label for="newFund"> Create your hedge fund</label>
-    <input type="text" name="fundName" value="{{hedgeFund.fundName}}" />
 </div>
+
+<a href="/new-fund">Create a fund</a>
 
 <div>
     <a type="button" href="/logout">Logout</a>
