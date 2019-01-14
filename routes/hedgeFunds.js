@@ -3,6 +3,7 @@ const HedgeFund = require('../models/hedgeFund.js');
 module.exports = function (app) {
 
     // GET dashboard
+    // TODO: fix this route to fund, this is not used
     app.get('/funds', (req, res) => {
         HedgeFund.find()
             .then(hedgeFund => {

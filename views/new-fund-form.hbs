@@ -4,10 +4,10 @@
     <form action="/fund" method="POST">
         {{!-- <label for="fund-name">Name of the fund</label> --}}
         <input type="text" name="fundName" value="{{hedgeFund.fundName}}"/>
-        <input type="number" name="worth" value="{{hedgeFund.worth}}">
-        <input type="number" name="portfolioContent" value="{{hedgeFund.portfolioContent}}">
+        <input type="text" name="worth" value="{{hedgeFund.worth}}">
+        <input type="text" name="portfolioContent" value="{{hedgeFund.portfolioContent}}">
         <input type="text" name="portfolioItems" value="{{hedgeFund.portfolioItems}}">
-        <input type="number" name="traders" value="{{hedgeFund.traders}}">
+        <input type="text" name="traders" value="{{hedgeFund.traders}}">
         <p>
             <button type="submit">Submit</button>
         </p>

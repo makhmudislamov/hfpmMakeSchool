@@ -12,6 +12,7 @@ const MongoStore = require('connect-mongo')(session);
 // ROUTES
 const indexRouter = require('./routes/index');
 const funds = require('./routes/hedgeFunds');
+const traders = require('./routes/traders');
 const auth = require('./routes/auth')
 
 const app = express();
@@ -54,6 +55,7 @@ app.use(session({
 // app.use('/', indexRouter);
 indexRouter(app);
 funds(app);
+traders(app);
 auth(app);
 
 
