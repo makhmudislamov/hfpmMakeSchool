@@ -3,11 +3,14 @@
 <h2>Top Instruments of the fund: {{hedgeFund.portfolioContent}}</h2>
 <h2>Amount of instruments of this fund: {{hedgeFund.portfolioItems}}</h2>
 <h2>Number of traders: {{hedgeFund.tradersNum}}</h2>
-<h2>List of traders:</h2>
+<a href="/fund/{{hedgeFund._id}}/traders"><h2>List of traders</h2></a>
 
-{{#each traders}}
-    {{trader}}
-{{/each}}
+<div class="trader-box">
+    {{#each trader}}
+        <h3>{{this.name}}</h3>
+    {{/each}}
+
+</div>
 
 <a href="/fund/{{hedgeFund._id}}/traders/new-trader">Add new Trader</a>
 <a href="/myfund">Go to Dashboard</a>

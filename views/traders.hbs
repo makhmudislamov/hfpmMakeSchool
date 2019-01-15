@@ -1,7 +1,10 @@
-<h1>The Following traders are working at</h1>
+<h1>List of traders</h1>
 
-{{#each trader}}
-{{!-- <a href="route for one trader"> <h2>{{this.name}}</h2> </a> --}}
-<h2>{{this.name}}</h2>
-{{/each}}
-<a href="/fund/traders/new-trader">Add new Trader</a>
+<div class="container">
+    {{#each trader}}
+    <a href="/fund/{{hedgeFund._id}}/traders/{{this._id}}"><h2>{{this.name}}</h2></a>
+    {{/each}}
+    
+</div>
+
+<a href="/fund/{{this._id}}/traders/new-trader">Add new Trader</a>
