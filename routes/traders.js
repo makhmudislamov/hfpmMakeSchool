@@ -30,30 +30,30 @@ module.exports = function (app) {
     // });
 
     // GET traders list - works but not reading {{hedgeFund._id}}
-    // app.get('/fund/:id/traders/', (req, res) => {
-    //     Trader.find()
-    //         .then(trader => {
-    //             res.render('traders', { trader: trader });
-    //         })
-    //         .catch(err => {
-    //             console.log(err);
-    //         })
-    // });
-
     app.get('/fund/:id/traders/', (req, res) => {
-        // find review
-        HedgeFund.findById(req.params.id).then(hedgeFund => {
-            // fetch its comments
-            Trader.find({ hedgeFundId: req.params.id }).then(trader => {
-                // respond with the template with both values
-                // res.render('orgs-show', { charity: charity, comments: comments })
-                res.render('traders', { trader: trader })
+        Trader.find()
+            .then(trader => {
+                res.render('traders', { trader: trader });
             })
-        }).catch((err) => {
-            // catch errors
-            console.log(err.message)
-        });
+            .catch(err => {
+                console.log(err);
+            })
     });
+
+    // app.get('/fund/:id/traders/', (req, res) => {
+    //     // find review
+    //     HedgeFund.findById(req.params.id).then(hedgeFund => {
+    //         // fetch its comments
+    //         Trader.find({ hedgeFundId: req.params.id }).then(trader => {
+    //             // respond with the template with both values
+    //             // res.render('orgs-show', { charity: charity, comments: comments })
+    //             res.render('traders', { trader: trader })
+    //         })
+    //     }).catch((err) => {
+    //         // catch errors
+    //         console.log(err.message)
+    //     });
+    // });
 
 
 

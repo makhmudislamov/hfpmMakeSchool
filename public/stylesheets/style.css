@@ -3,6 +3,22 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+h1,h2 {
+  color: blue;
+}
+
+nav {
+  padding: 0px;
+  height: 100px;
+  background-color: blue;
+  
+}
+nav > h1 {
+  color: white;
+  font-weight: bold;
+  font-size: 40px;
+  
+}
 a {
   color: #00B7FF;
 }

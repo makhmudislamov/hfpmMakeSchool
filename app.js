@@ -7,6 +7,7 @@ const logger = require('morgan');
 const exphbs = require('express-handlebars');
 const mongoose = require('mongoose');
 const session = require('express-session');
+const charts = require('chart.js');
 const MongoStore = require('connect-mongo')(session);
 
 // ROUTES
