@@ -2,7 +2,7 @@
 
 <div class="container">
     {{#each trader}}
-    <a href="/fund/{{hedgeFund._id}}/traders/{{this._id}}"><h2>{{this.name}}</h2></a>
+    <a href="/fund/{{this.hedgeFundId._id}}/traders/{{this._id}}"><h2>{{this.name}}</h2></a>
     {{/each}}
     
 </div>

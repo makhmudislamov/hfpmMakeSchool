@@ -1,11 +1,14 @@
 <div class="trader-form">
     {{!-- issue is in action --}}
-    <form action="/fund/{{hedgeFund._id}}" method="POST">
+    <form action="/fund/{{hedgeFund._id}}/traders" method="POST">
+    <input type="hidden"  value="{{hedgeFund._id}}" name="hedgeFundId" />
         <input type="text" name="name" value="{{trader.name}}" placeholder="Full Name">
         <input type="text" name="allocated" value="{{trader.allocated}}" placeholder="How much he is allocatred?">
         <input type="text" name="currentWorth" value="{{trader.currentWorth}}" placeholder="How much does this trader worth?">
         <input type="text" name="portfolioContent" value="{{trader.portfolioContent}}" placeholder="What is this trader's main instrument?">
         <input type="text" name="portfolioItems" value="{{trader.portfolioItems}}" placeholder="How many instruments in his porfolio?">
+        
+        
         <p>
             <button type="submit" >Submit</button>
         </p>

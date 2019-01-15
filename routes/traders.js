@@ -4,19 +4,30 @@ const HedgeFund = require('../models/hedgeFund');
 module.exports = function (app) {
     // GET form
     app.get('/fund/:id/traders/new-trader', (req, res) => {
+        // HedgeFund.findById(req.params.id).then(hedgeFund => {
+        //     res.render('new-trader', {})
+        // })
+
         HedgeFund.findById(req.params.id).then(hedgeFund => {
-            res.render('new-trader', {hedgeFund})
-        })
+            // fetch its comments
+            Trader.find({ hedgeFundId: req.params.id }).then(traders => {
+                // respond with the template with both values
+                res.render('new-trader', {hedgeFund})
+            })
+        }).catch ((err) => {
+            // catch errors
+            console.log(err.message)
+        });
         
     });
 
     // CREATE new trader
-    app.post('/fund/:id/traders/', (req, res) => {
+    app.post('/fund/:id/traders', (req, res) => {
+        
         Trader.create(req.body).then((trader) => {
             console.log(trader);
-            res.redirect(`/fund/:id/traders/${trader._id}`);
-            // res.redirect(`/fund/:id/${trader.hedgeFundId}`);
-            // res.redirect('fund-show');
+            res.redirect('/fund/:id/traders'); // if ${hedgeFund._id or hedgeFundId} not working
+            // res.redirect("/myfund")
         }).catch((err) => {
             console.log(err.message);
         })
@@ -30,9 +41,10 @@ module.exports = function (app) {
     // });
 
     // GET traders list - works but not reading {{hedgeFund._id}}
-    app.get('/fund/:id/traders/', (req, res) => {
+    app.get('/fund/:id/traders', (req, res) => {
         Trader.find()
             .then(trader => {
+                console.log(trader)
                 res.render('traders', { trader: trader });
             })
             .catch(err => {
@@ -60,7 +72,7 @@ module.exports = function (app) {
     // GET one trader
     app.get('/fund/:id/traders/:id', (req, res) => {
         Trader.findById(req.params.id).then(trader => {
-            res.render('trader-show', {trader})
+            res.render('trader-show', {trader: trader})
         })
     });
 
