@@ -1,8 +1,8 @@
-<h1>This is hedge fund dashboard</h1>
+<h1 class="welcome">HFPM Dashboard</h1>
 
 <div class="fund-box">
     {{#each hedgeFund}}
-    <h1><a href="/fund/{{this._id}}">{{this.fundName}}</a></h1>
+    <h1>Your current fund: <a href="/fund/{{this._id}}">  {{this.fundName}}</a></h1>
     {{/each}}
 </div>
 
@@ -12,5 +12,72 @@
 <div>
     <a type="button" href="/logout">Logout</a>
 </div>
+
+<style>
+    .welcome {
+        text-align: center;
+        font-size: 40px;
+    }
+</style>
+
+<div class="container">
+    <canvas id="myChart"></canvas>
+</div>
+<script>
+    let myChart = document.getElementById('myChart').getContext('2d');
+
+    // Global Options
+    Chart.defaults.global.defaultFontFamily = 'Lato';
+    Chart.defaults.global.defaultFontSize = 18;
+    Chart.defaults.global.defaultFontColor = '#777';
+
+    let massPopChart = new Chart(myChart, {
+        type: 'line', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+        data: {
+            labels: ['New York', 'Miami', 'San Francisco', 'Seattle', 'Boston', 'Los Angeles'],
+            datasets: [{
+                label: 'Users',
+                data: [
+                    617594,
+                    181045,
+                    153060,
+                    106519,
+                    105162,
+                    95072
+                ],
+                backgroundColor:'green',
+                borderWidth: 1,
+                borderColor: '#777',
+                hoverBorderWidth: 3,
+                hoverBorderColor: '#000'
+            }]
+        },
+        options: {
+            title: {
+                display: true,
+                text: 'HFPM users across the US',
+                fontSize: 25
+            },
+            legend: {
+                display: true,
+                position: 'right',
+                labels: {
+                    fontColor: '#000'
+                }
+            },
+            layout: {
+                padding: {
+                    left: 50,
+                    right: 0,
+                    bottom: 0,
+                    top: 0
+                }
+            },
+            tooltips: {
+                enabled: true
+            }
+        }
+    });
+</script>
 
   

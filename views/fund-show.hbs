@@ -1,7 +1,7 @@
 <h1>Hedge Fund Name: {{hedgeFund.fundName}}</h1>
 <h2>Current worth of the fund: {{hedgeFund.worth}}</h2>
 <h2>Top Instruments of the fund: {{hedgeFund.portfolioContent}}</h2>
-<h2>Amount of instruments of this fund: {{hedgeFund.portfolioItems}}</h2>
+<h2>Number of instruments in this fund: {{hedgeFund.portfolioItems}}</h2>
 <h2>Number of traders: {{hedgeFund.tradersNum}}</h2>
 <a href="/fund/{{hedgeFund._id}}/traders"><h2>List of traders</h2></a>
 
@@ -14,3 +14,142 @@
 
 <a href="/fund/{{hedgeFund._id}}/traders/new-trader">Add new Trader</a>
 <a href="/myfund">Go to Dashboard</a>
+
+<div class="chart-container">
+<canvas id="performanceChart" width="1000" height="500" ></canvas>
+<canvas id="portfolioChart"></canvas>
+</div>
+
+<script>
+
+    let performanceChart = document.getElementById('performanceChart').getContext('2d');
+
+    // Global Options
+    Chart.defaults.global.defaultFontFamily = 'Lato';
+    Chart.defaults.global.defaultFontSize = 18;
+    Chart.defaults.global.defaultFontColor = '#777';
+
+    let perfChart = new Chart(performanceChart, {
+        type: 'line', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+        data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ],
+            //
+            datasets: [{
+                label: 'Capital Gains/Losses for 2018',
+                data: [
+                    7,
+                    3.4,
+                    6.2,
+                    2,
+                    5.3,
+                    6.5,
+                    8.7,
+                    6.5,
+                    -0.3,
+                    4.7,
+                    5.9,
+                    8
+
+                ],
+                backgroundColor: 'green',
+                borderWidth: 1,
+                borderColor: '#777',
+                hoverBorderWidth: 3,
+                hoverBorderColor: '#000'
+            }]
+        },
+        options: {
+            title: {
+                display: true,
+                text: 'Make School Capital Performance for 2018 in %',
+                fontSize: 25
+            },
+            legend: {
+                display: true,
+                position: 'right',
+                labels: {
+                    fontColor: '#000'
+                }
+            },
+            layout: {
+                padding: {
+                    left: 50,
+                    right: 0,
+                    bottom: 0,
+                    top: 0
+                }
+            },
+            tooltips: {
+                enabled: true
+            }
+        }
+    });
+  
+</script>
+
+<script>
+
+    let portfolioChart = document.getElementById('portfolioChart').getContext('2d');
+
+    // Global Options
+    Chart.defaults.global.defaultFontFamily = 'Lato';
+    Chart.defaults.global.defaultFontSize = 18;
+    Chart.defaults.global.defaultFontColor = '#777';
+
+    let porfChart = new Chart(portfolioChart, {
+        type: 'bar', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+        data: {
+            labels: ['VC Investment', 'US Treasury Bonds', 'Stocks', 'Options', 'ForEx', 'Futures'],
+            datasets: [{
+                label: 'Portfolio',
+                data: [
+                    23,
+                    18,
+                    10,
+                    9,
+                    17,
+                    13
+                ],
+                //backgroundColor:'green',
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.6)',
+                    'rgba(54, 162, 235, 0.6)',
+                    'rgba(255, 206, 86, 0.6)',
+                    'rgba(75, 192, 192, 0.6)',
+                    'rgba(153, 102, 255, 0.6)',
+                    'rgba(255, 159, 64, 0.6)',
+                    'rgba(255, 99, 132, 0.6)'
+                ],
+                borderWidth: 1,
+                borderColor: '#777',
+                hoverBorderWidth: 3,
+                hoverBorderColor: '#000'
+            }]
+        },
+        options: {
+            title: {
+                display: true,
+                text: 'Make School Capital Portfolio in %',
+                fontSize: 25
+            },
+            legend: {
+                display: true,
+                position: 'right',
+                labels: {
+                    fontColor: '#000'
+                }
+            },
+            layout: {
+                padding: {
+                    left: 50,
+                    right: 0,
+                    bottom: 0,
+                    top: 0
+                }
+            },
+            tooltips: {
+                enabled: true
+            }
+        }
+    });
+</script>
