@@ -1,10 +1,26 @@
-## Hedge Fund Performance Management Web Tool - HFPM
+## Hedge Fund Performance Management Web Tool - HFPM (Work in Progress)
 
 This web tool allows small hedge fund managers to keep track of their fund performance detailed to each traders daily activity.
 
-## Link to the app
+<!-- ## Link to the app -->
 
-[HFPM](https://hfpm-ms.herokuapp.com/)
+<!-- [HFPM](https://hfpm-ms.herokuapp.com/) -->
+## History
+
+Makhmud Islamov runs hedge fund simulation club at Make School - MS Capital. But there is no simple and user friendly platform that can be used for small training hedge funds to keep track of their performance. As a result, Makhmud decided to build such platform himself. 
+
+## User Requirements
+
+* [X] User Authentication and Authorization
+* [X] User can create a hedge fund profile
+* [X] User can add traders' mini profiles
+* [ ] User can see hedge fund's daily, weekly, monthly,  performance - chart
+* [ ] User can see each trader's daily, weekly, monthly,  performance - chart
+* [ ] User can send trader profile access via email
+* [ ] User can see S&P 500, NASDAQ, Russel real time charts on dashboard
+* [ ] User can connect their trading platform to HFPM to automatize trade loss/gain input
+
+## Screenshots
 
 ## Getting Started
 
