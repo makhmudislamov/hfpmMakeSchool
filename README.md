@@ -19,8 +19,13 @@ Makhmud Islamov runs hedge fund simulation club at Make School - MS Capital. But
 * [ ] User can send trader profile access via email
 * [ ] User can see S&P 500, NASDAQ, Russel real time charts on dashboard
 * [ ] User can connect their trading platform to HFPM to automatize trade loss/gain input
+* [ ] User can user the web took as a desktop app
+
 
 ## Screenshots
+
+![walkthrough](public/images/demo1.png)
+![walkthrough](public/images/demo2.png)
 
 ## Getting Started
 
